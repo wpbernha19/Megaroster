@@ -6,6 +6,10 @@ const megaroster = {
   init() {
     this.studentList = document.querySelector('#student-list')
     this.max = 0
+    this.setupEventListeners()
+  },
+
+  setupEventListeners() {
     document
       .querySelector('#new-student')
       .addEventListener('submit', this.addStudent.bind(this))
@@ -28,14 +32,34 @@ const megaroster = {
     f.reset()
   },
 
-  prependChild(parent, child){
+  prependChild(parent, child) {
     parent.insertBefore(child, parent.firstChild)
   },
 
   buildListItem(student) {
-    const li = document.createElement('li')
-    li.textContent = student.name
+    const template = document.querySelector('.student.template')
+    const li = template.cloneNode(true)
+    li.querySelector('.student-name').textContent = student.name
+    li.dataset.id = student.id
+    this.removeClassName(li, 'template')
+
+    li
+      .querySelector('button.remove')
+      .addEventListener('click', this.removeStudent.bind(this))
+
     return li
   },
+
+  removeStudent(ev) {
+    const btn = ev.target
+    btn.closest('.student').remove()
+
+    // Remove it from the this.students array
+    // this.students.splice(?, 1)
+  },
+
+  removeClassName(el, className) {
+    el.className = el.className.replace(className, '').trim()
+  }
 }
 megaroster.init()
