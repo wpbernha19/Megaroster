@@ -1,5 +1,5 @@
-git add .
-git status
-pwd
-pwd
+
 # Megaroster
+
+This is my README for megaroster.
+
