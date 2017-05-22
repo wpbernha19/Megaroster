@@ -80,6 +80,10 @@ class Megaroster {
     li
       .querySelector('button.move-up')
       .addEventListener('click', this.moveUp.bind(this, student))
+
+    li
+      .querySelector('button.move-down')
+      .addEventListener('click', this.moveDown.bind(this, student))
   }
 
   save() {
@@ -100,6 +104,25 @@ class Megaroster {
       const previousStudent = this.students[index - 1]
       this.students[index - 1] = student
       this.students[index] = previousStudent
+      this.save()
+    }
+  }
+
+  moveDown(student, ev) {
+    const btn = ev.target
+    const li = btn.closest('.student')
+
+    const index = this.students.findIndex((currentStudent, i) => {
+      return currentStudent.id === student.id
+    })
+    const studentLength = this.students.length - 1
+
+    if (index < studentLength) {
+      this.studentList.insertBefore(li.nextSibling, li)
+
+      const nextStudent = this.students[index + 1]
+      this.students[index + 1] = student
+      this.students[index] = nextStudent
       this.save()
     }
   }
