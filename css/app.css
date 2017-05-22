@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
 
 h2 {
-  font-family:'Abril Fatface', cursive;
+  font-family: 'Abril Fatface', cursive;
   text-transform: lowercase;
 }
 
@@ -34,9 +34,18 @@ h2 {
   margin-bottom: 0;
 }
 
+.actions .button {
+  padding: 0.5em 0.69em 0.5em 0.64em;
+  font-size: 1.2rem;
+}
+
+.actions .button:hover {
+  transform: scale(1.1)
+}
+
 .promoted {
-  background-color: #df2874;
-  border-color: #bbb;
+  background-color: #ffa807;
+  border-color: #ffc656;
 }
 
 .student:first-child button.move-up,
@@ -52,6 +61,11 @@ h2 {
   outline-width: 2px;
 }
 
-[contenteditable]:focus {
-  outline-width: 5px
+[contenteditable="true"]:focus {
+  outline-width: 5px;
+}
+
+.button.success,
+.button.success:hover {
+  color: white;
 }
